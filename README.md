@@ -1,4 +1,5 @@
-# OneForAll
+# OneForAll-KL
+相比原版，支持对多个key的使用，每次使用会随机选择key
 
 [![Build Status](https://travis-ci.org/shmilylty/OneForAll.svg?branch=master)](https://travis-ci.org/shmilylty/OneForAll)
 [![codecov](https://codecov.io/gh/shmilylty/OneForAll/branch/master/graph/badge.svg)](https://codecov.io/gh/shmilylty/OneForAll)
