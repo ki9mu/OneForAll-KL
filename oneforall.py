@@ -24,7 +24,7 @@ from modules import wildcard
 from config import settings
 from config.log import logger
 from takeover import Takeover
-from 
+from create_random_api_config import create_api_file
 
 yellow = '\033[01;33m'
 white = '\033[01;37m'
@@ -233,6 +233,7 @@ class OneForAll(object):
         :rtype: list
         """
         print(oneforall_banner)
+        create_api_file()
         dt = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(f'[*] Starting OneForAll @ {dt}\n')
         logger.log('DEBUG', 'Python ' + utils.python_version())
