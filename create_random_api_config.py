@@ -1,27 +1,33 @@
 from random import randint
-import config
+import config.apilist
 
 def api_list_enable():
     return eval_api("enable")
 
+
+
 def create_api_file():
     if api_list_enable():
+        f = open("config/api.py","w")
         api_keywords_list = get_api_list_keyword()
         print(api_keywords_list)
         print(len(api_keywords_list))
         for api_keyword in api_keywords_list:
             write_data = file_write(api_keyword)
-            print(write_data)
+            f.write(write_data)
+        f.close()
+    else:
+        create_default_file()
      
 def create_default_file():
-    f = open("config/apilist.py","")
+    f = open("config/apilist.py","r",encoding="utf8")
     f2 = open("config/api.py","w")
-    f2.write(f.read())
+    f2.write(f.read().replace(r"#.*",""))
     f.close()
     f2.close()
 
 def eval_api(api_keyword):
-    import_str = "config.{}".format(api_keyword)
+    import_str = "config.apilist.{}".format(api_keyword)
     eval_api_value = eval(import_str)
     return eval_api_value
 
@@ -41,7 +47,7 @@ def file_write(api_keyword):
     return write_data
 
 def get_api_list_keyword():
-    data = list(dir(config))
+    data = list(dir(config.apilist))
     print(data)
     api_list = []
     for item in data:
